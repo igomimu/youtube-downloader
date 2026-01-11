@@ -168,9 +168,10 @@ def run_download(url: str, format_id: str):
     os.makedirs(save_path, exist_ok=True)
     
     ydl_opts = {
-        'format': format_id,
+        'format': f"{format_id}+bestaudio/best",
         'outtmpl': os.path.join(save_path, '%(title)s.%(ext)s'),
         'progress_hooks': [download_manager.hook],
+        # 'merge_output_format': 'mp4', # Optional: ensure final container is mp4 if desired
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
