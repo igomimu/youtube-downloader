@@ -163,8 +163,7 @@ def get_info(req: VideoRequest):
 
 def run_download(url: str, format_id: str):
     # Save to Windows Desktop for easier access
-    # WSL path for C:\Users\lucky\Desktop\TubeDownloads
-    save_path = "/mnt/c/Users/lucky/Desktop/TubeDownloads"
+    save_path = os.path.join(os.path.expanduser("~"), "Downloads", "TubeDownloads")
     os.makedirs(save_path, exist_ok=True)
     
     ydl_opts = {
